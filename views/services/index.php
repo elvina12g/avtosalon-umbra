@@ -5,7 +5,7 @@
             
             <div class="card border-0 shadow mb-4">
                 <div class="card-body p-5">
-                    <h3 class="mb-4">Запись на сервис</h3>
+                    <h3 class="mb-4">Запись на сервисное обслуживание</h3>
                     
                     <?php if(isset($_SESSION['user_id'])): ?>
                         <form action="/services/book" method="POST">
