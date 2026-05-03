@@ -1,3 +1,4 @@
+php
 <!-- views/home/index.php -->
 <?php
 // Получаем популярные автомобили для главной страницы
@@ -9,7 +10,6 @@ if(isset($db)) {
 }
 ?>
     <!-- ========== HERO СЕКЦИЯ ========== -->
-<main>
     <section class="hero-section">
         <div class="hero-bg-image">
             <img src="assets/images/brands/фон2.jpg" alt="Luxury Cars Showroom" class="hero-bg-img">

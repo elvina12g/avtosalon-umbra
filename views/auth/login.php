@@ -40,18 +40,9 @@ unset($_SESSION['error'], $_SESSION['success']);
             margin-bottom: 32px;
         }
         
-        .auth-logo .brand-text {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--primary-dark);
-            letter-spacing: 2px;
-        }
-        
-        .auth-logo .brand-subtext {
-            font-size: 11px;
-            color: var(--accent-gold);
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .auth-logo-img {
+            height: 80px;
+            width: auto;
         }
         
         .auth-title {
@@ -181,8 +172,7 @@ unset($_SESSION['error'], $_SESSION['success']);
     <div class="auth-container">
         <div class="auth-card">
             <div class="auth-logo">
-                <div class="brand-text">UMBRA</div>
-                <div class="brand-subtext">Premium Auto</div>
+                <img src="assets/images/logo/Group 5.png" alt="UMBRA Logo" class="auth-logo-img">
             </div>
             
             <h1 class="auth-title">Вход</h1>
