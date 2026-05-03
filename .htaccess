@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /
+
+# Перенаправление на index.php для всех запросов, кроме существующих файлов и папок
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+# Убедитесь, что файлы в assets доступны напрямую
+RewriteCond %{REQUEST_URI} \.(css|js|jpg|jpeg|png|gif|ico)$ [NC]
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
