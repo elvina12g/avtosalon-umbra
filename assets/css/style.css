@@ -88,32 +88,6 @@ a {
 }
 
 /* ========== НАВИГАЦИЯ ========== */
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 24px 0;
-    background: rgba(249, 246, 240, 0.95);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    transition: var(--transition-smooth);
-    border-bottom: 1px solid var(--border-light);
-}
-
-.navbar.scrolled {
-    padding: 16px 0;
-    background: rgba(249, 246, 240, 0.98);
-    box-shadow: var(--shadow-soft);
-}
-
-.navbar-brand {
-    padding: 0;
-    display: flex;
-    align-items: center;
-}
-
 .navbar-logo {
     height: 48px;
     width: auto;

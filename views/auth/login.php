@@ -172,7 +172,7 @@ unset($_SESSION['error'], $_SESSION['success']);
     <div class="auth-container">
         <div class="auth-card">
             <div class="auth-logo">
-                <img src="assets/images/logo/Group 5.png" alt="UMBRA Logo" class="navbar-logo">
+                <img src="assets/images/logo/Group 5.png" alt="UMBRA Logo" class="auth-logo-img">
             </div>
             
             <h1 class="auth-title">Вход</h1>

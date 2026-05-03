@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 // header.php - обновленная версия с бургер-меню
+=======
+// header.php - начало файла (проверьте, что нет лишних тегов)
+>>>>>>> 118753ca22f0af6f7f443bf40c307a12b8452812
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -23,10 +27,17 @@
 </head>
 <body class="<?php echo ($_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == '/index.php') ? 'home-page' : ''; ?>">
     <!-- Навигация -->
+<<<<<<< HEAD
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid px-4">
             <a class="navbar-brand" href="/">
                 <img src="/assets/images/logo/Group 5.png" alt="UMBRA Logo" class="navbar-logo">
+=======
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="/">
+                <img src="assets/images/logo/Group 5.png" alt="UMBRA Logo" class="navbar-logo">
+>>>>>>> 118753ca22f0af6f7f443bf40c307a12b8452812
             </a>
 
             <div class="d-flex align-items-center order-lg-3">
