@@ -1,5 +1,5 @@
 <?php
-// header.php - начало файла (проверьте, что нет лишних тегов)
+// header.php - обновленная версия с бургер-меню
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -8,11 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $pageTitle ?? 'Umbra - Премиальный автосалон'; ?></title>
     <meta name="description" content="<?php echo $metaDescription ?? 'Официальный дилер премиальных автомобилей'; ?>">
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nico+Moji&display=swap" rel="stylesheet">
-    
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -24,14 +23,22 @@
 </head>
 <body class="<?php echo ($_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == '/index.php') ? 'home-page' : ''; ?>">
     <!-- Навигация -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container-fluid px-4">
             <a class="navbar-brand" href="/">
-                <img src="assets/images/logo/Group 5.png" alt="UMBRA Logo" class="navbar-logo">
+                <img src="/assets/images/logo/Group 5.png" alt="UMBRA Logo" class="navbar-logo">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
+            <div class="d-flex align-items-center order-lg-3">
+                <a href="tel:+74951234567" class="navbar-phone d-none d-lg-flex">
+                    <i class="fas fa-phone"></i>
+                    <span>+7 (495) 123-45-67</span>
+                </a>
+                <button class="navbar-toggler ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-label="Меню">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
             <div class="collapse navbar-collapse" id="navbarMain">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
@@ -63,12 +70,18 @@
                     <li class="nav-item">
                         <a class="nav-link <?php echo ($_SERVER['REQUEST_URI'] == '/contacts') ? 'active' : ''; ?>" href="/contacts">Контакты</a>
                     </li>
+                    <li class="nav-item d-lg-none mt-3 pt-3 border-top">
+                        <a href="tel:+74951234567" class="navbar-phone">
+                            <i class="fas fa-phone"></i>
+                            <span>+7 (495) 123-45-67</span>
+                        </a>
+                    </li>
                 </ul>
-                <div class="navbar-actions">
+                <div class="navbar-actions d-none d-lg-flex">
                     <?php if(isset($_SESSION['user_id'])): ?>
                         <div class="dropdown">
                             <button class="btn btn-outline-gold dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                <i class="fas fa-user"></i> <?php echo $_SESSION['user_name']; ?>
+                                <i class="fas fa-user"></i> <?php echo htmlspecialchars($_SESSION['user_name']); ?>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="/profile"><i class="fas fa-id-card"></i> Личный кабинет</a></li>
@@ -78,7 +91,7 @@
                             </ul>
                         </div>
                     <?php else: ?>
-                        <a href="/auth/login" class="btn btn-outline-gold me-2">Войти</a>
+                        <a href="/auth/login" class="btn btn-outline-gold">Войти</a>
                         <a href="/auth/register" class="btn btn-gold">Регистрация</a>
                     <?php endif; ?>
                 </div>
@@ -89,16 +102,16 @@
     <!-- Flash Messages -->
     <?php if(isset($_SESSION['success'])): ?>
         <div class="flash-message success">
-            <?php 
+            <?php
                 echo $_SESSION['success'];
                 unset($_SESSION['success']);
             ?>
         </div>
     <?php endif; ?>
-    
+
     <?php if(isset($_SESSION['error'])): ?>
         <div class="flash-message error">
-            <?php 
+            <?php
                 echo $_SESSION['error'];
                 unset($_SESSION['error']);
             ?>

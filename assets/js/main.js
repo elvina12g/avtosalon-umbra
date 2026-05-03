@@ -1,11 +1,12 @@
-// main.js - обновленная версия
+// main.js - обновленная версия с плавными анимациями
 
 document.addEventListener('DOMContentLoaded', function() {
     // Инициализация AOS анимаций
     AOS.init({
         duration: 1000,
         once: true,
-        offset: 100
+        offset: 100,
+        easing: 'ease-out-cubic'
     });
 
     // Слайдер для популярных моделей
@@ -14,147 +15,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextSlide = document.getElementById('nextSlide');
 
     if (carsSlider && prevSlide && nextSlide) {
+        let scrollAmount = 0;
         const slideWidth = document.querySelector('.car-slide')?.offsetWidth || 320;
         const gap = 30;
-        
-        prevSlide.addEventListener('click', () => {
-            carsSlider.scrollBy({
-                left: -(slideWidth + gap),
-                behavior: 'smooth'
-            });
-        });
-        
-        nextSlide.addEventListener('click', () => {
-            carsSlider.scrollBy({
-                left: slideWidth + gap,
-                behavior: 'smooth'
-            });
-        });
-    }
 
-    // Карусель отзывов с частично видимыми соседями
-    const testimonialsCarousel = document.getElementById('testimonialsCarousel');
-    const prevTestimonial = document.getElementById('prevTestimonial');
-    const nextTestimonial = document.getElementById('nextTestimonial');
-    const testimonialDots = document.querySelectorAll('#testimonialsDots .dot');
-    
-    if (testimonialsCarousel && prevTestimonial && nextTestimonial) {
-        let currentIndex = 0;
-        let autoScrollInterval;
-        
-        function getVisibleItemsCount() {
-            if (window.innerWidth >= 992) return 3;
-            if (window.innerWidth >= 768) return 2;
-            return 1;
-        }
-        
-        function getTotalItems() {
-            return document.querySelectorAll('.testimonial-item').length;
-        }
-        
-        function getItemWidth() {
-            const item = document.querySelector('.testimonial-item');
-            if (!item) return 320;
-            const style = getComputedStyle(item);
-            const width = item.offsetWidth;
-            const gap = 30;
-            return width + gap;
-        }
-        
-        function updateCarousel() {
-            const itemWidth = getItemWidth();
-            const scrollPosition = currentIndex * itemWidth;
-            testimonialsCarousel.scrollTo({
-                left: scrollPosition,
+        prevSlide.addEventListener('click', () => {
+            scrollAmount = Math.max(0, scrollAmount - (slideWidth + gap));
+            carsSlider.scrollTo({
+                left: scrollAmount,
                 behavior: 'smooth'
             });
-            
-            // Обновляем точки
-            testimonialDots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
-        
-        function goToNext() {
-            const visibleItems = getVisibleItemsCount();
-            const totalItems = getTotalItems();
-            const maxIndex = Math.max(0, totalItems - visibleItems);
-            
-            if (currentIndex < maxIndex) {
-                currentIndex++;
-            } else {
-                currentIndex = 0;
-            }
-            updateCarousel();
-        }
-        
-        function goToPrev() {
-            const visibleItems = getVisibleItemsCount();
-            const totalItems = getTotalItems();
-            const maxIndex = Math.max(0, totalItems - visibleItems);
-            
-            if (currentIndex > 0) {
-                currentIndex--;
-            } else {
-                currentIndex = maxIndex;
-            }
-            updateCarousel();
-        }
-        
-        // Обработчики кнопок
-        prevTestimonial.addEventListener('click', () => {
-            goToPrev();
-            resetAutoScroll();
         });
-        
-        nextTestimonial.addEventListener('click', () => {
-            goToNext();
-            resetAutoScroll();
-        });
-        
-        // Обработчики точек
-        testimonialDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentIndex = index;
-                updateCarousel();
-                resetAutoScroll();
+
+        nextSlide.addEventListener('click', () => {
+            const maxScroll = carsSlider.scrollWidth - carsSlider.clientWidth;
+            scrollAmount = Math.min(maxScroll, scrollAmount + (slideWidth + gap));
+            carsSlider.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
             });
         });
-        
-        // Автоматическая прокрутка
-        function startAutoScroll() {
-            autoScrollInterval = setInterval(() => {
-                goToNext();
-            }, 5000);
-        }
-        
-        function resetAutoScroll() {
-            clearInterval(autoScrollInterval);
-            startAutoScroll();
-        }
-        
-        // Приостанавливаем автопрокрутку при наведении
-        testimonialsCarousel.addEventListener('mouseenter', () => {
-            clearInterval(autoScrollInterval);
-        });
-        
-        testimonialsCarousel.addEventListener('mouseleave', () => {
-            startAutoScroll();
-        });
-        
-        // Запускаем автопрокрутку
-        startAutoScroll();
-        
-        // Обновляем при изменении размера окна
-        window.addEventListener('resize', () => {
-            const visibleItems = getVisibleItemsCount();
-            const totalItems = getTotalItems();
-            const maxIndex = Math.max(0, totalItems - visibleItems);
-            
-            if (currentIndex > maxIndex) {
-                currentIndex = maxIndex;
-                updateCarousel();
-            }
+
+        // Обновляем scrollAmount при ручном скролле
+        carsSlider.addEventListener('scroll', () => {
+            scrollAmount = carsSlider.scrollLeft;
         });
     }
 
@@ -222,21 +106,21 @@ document.addEventListener('DOMContentLoaded', function() {
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
+
             const name = this.querySelector('[name="name"]').value.trim();
             const phone = this.querySelector('[name="phone"]').value.trim();
-            
+
             if (!name || !phone) {
                 showNotification('Пожалуйста, заполните обязательные поля', 'error');
                 return;
             }
-            
+
             // Имитация отправки
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
             submitBtn.disabled = true;
-            
+
             setTimeout(() => {
                 showNotification('Заявка успешно отправлена! Менеджер свяжется с вами.', 'success');
                 this.reset();
@@ -245,20 +129,20 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 1500);
         });
     }
-    
+
     // Функция уведомлений
     function showNotification(message, type) {
         const notification = document.createElement('div');
         notification.className = `flash-message ${type}`;
         notification.innerHTML = message;
         document.body.appendChild(notification);
-        
+
         setTimeout(() => {
             notification.style.opacity = '0';
             setTimeout(() => notification.remove(), 300);
         }, 3000);
     }
-    
+
     // Ленивая загрузка изображений
     const images = document.querySelectorAll('img[data-src]');
     const imageObserver = new IntersectionObserver((entries) => {
@@ -271,6 +155,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     images.forEach(img => imageObserver.observe(img));
 });

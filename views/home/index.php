@@ -15,7 +15,7 @@ if(isset($db)) {
             <img src="assets/images/brands/фон2.jpg" alt="Luxury Cars Showroom" class="hero-bg-img">
             <div class="hero-overlay-gradient"></div>
         </div>
-        
+
         <div class="hero-content">
             <div class="container">
                 <div class="row min-vh-100 align-items-center">
@@ -28,8 +28,8 @@ if(isset($db)) {
                         </h1>
                         <div class="hero-divider"></div>
                         <p class="hero-description">
-                            Umbra Premium Auto — где безупречный стиль встречается с абсолютным комфортом. 
-                            Эксклюзивные автомобили премиум-класса с персональным подходом. 
+                            Umbra Premium Auto — где безупречный стиль встречается с абсолютным комфортом.
+                            Эксклюзивные автомобили премиум-класса с персональным подходом.
                             Официальный дилер Mercedes-Benz, BMW, Audi, Porsche.
                         </p>
                         <div class="hero-buttons">
@@ -39,7 +39,7 @@ if(isset($db)) {
                             </a>
                         </div>
                     </div>
-                    
+
                     <div class="col-lg-5 d-none d-lg-block" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
                         <div class="hero-floating-card">
                             <div class="floating-car-image">
@@ -106,7 +106,7 @@ if(isset($db)) {
                 <h2 class="section-title">Официальные <span class="gold-text">дилеры</span></h2>
                 <p class="section-description">Только оригинальные автомобили с полной заводской гарантией</p>
             </div>
-            
+
             <div class="brands-grid">
                 <div class="brand-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="brand-logo-wrapper">
@@ -143,7 +143,7 @@ if(isset($db)) {
                 <span class="section-subtitle">Почему Umbra</span>
                 <h2 class="section-title">Преимущества <span class="gold-text">работы с нами</span></h2>
             </div>
-            
+
             <div class="advantages-grid">
                 <div class="advantage-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="advantage-icon">
@@ -152,7 +152,7 @@ if(isset($db)) {
                     <h3>Эксклюзивность</h3>
                     <p>Лимитированные серии и редкие модели из первых рук</p>
                 </div>
-                
+
                 <div class="advantage-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="advantage-icon">
                         <i class="fas fa-user-tie"></i>
@@ -160,7 +160,7 @@ if(isset($db)) {
                     <h3>Персональный подход</h3>
                     <p>Индивидуальный консьерж-сервис 24/7 для каждого клиента</p>
                 </div>
-                
+
                 <div class="advantage-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="advantage-icon">
                         <i class="fas fa-clock"></i>
@@ -168,7 +168,7 @@ if(isset($db)) {
                     <h3>Оперативность</h3>
                     <p>Быстрое оформление покупки любой модели авто</p>
                 </div>
-                
+
                 <div class="advantage-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="advantage-icon">
                         <i class="fas fa-shield-alt"></i>
@@ -188,7 +188,7 @@ if(isset($db)) {
                 <h2 class="section-title">Популярные <span class="gold-text">модели</span></h2>
                 <p class="section-description">Автомобили, которые выбирают наши клиенты</p>
             </div>
-            
+
             <div class="cars-slider-wrapper">
                 <div class="cars-slider" id="carsSlider">
                     <?php if(!empty($popularCars)): ?>
@@ -196,9 +196,9 @@ if(isset($db)) {
                         <div class="car-slide" data-aos="fade-up" data-aos-delay="<?php echo ($index + 1) * 100; ?>">
                             <div class="car-card-luxury">
                                 <div class="car-image">
-                                    <?php 
-                                    $imagePath = !empty($car['image']) && file_exists('uploads/cars/' . $car['image']) 
-                                        ? '/uploads/cars/' . $car['image'] 
+                                    <?php
+                                    $imagePath = !empty($car['image']) && file_exists('uploads/cars/' . $car['image'])
+                                        ? '/uploads/cars/' . $car['image']
                                         : '/assets/images/cars/default-car.jpg';
                                     ?>
                                     <img src="<?php echo $imagePath; ?>" alt="<?php echo htmlspecialchars($car['brand'] . ' ' . $car['model']); ?>">
@@ -241,7 +241,7 @@ if(isset($db)) {
                         </div>
                     <?php endif; ?>
                 </div>
-                
+
                 <button class="slider-nav prev-slide" id="prevSlide">
                     <i class="fas fa-chevron-left"></i>
                 </button>
@@ -249,7 +249,7 @@ if(isset($db)) {
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
-            
+
             <div class="text-center mt-5">
                 <a href="/cars" class="btn btn-outline-gold btn-lg">Весь каталог <i class="fas fa-arrow-right ms-2"></i></a>
             </div>
@@ -263,7 +263,7 @@ if(isset($db)) {
                 <span class="section-subtitle">Сервис и поддержка</span>
                 <h2 class="section-title">Наши <span class="gold-text">услуги</span></h2>
             </div>
-            
+
             <div class="services-grid">
                 <div class="service-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="service-icon">
@@ -273,7 +273,7 @@ if(isset($db)) {
                     <p>Почувствуйте мощь и комфорт автомобиля перед покупкой</p>
                     <a href="/cars/testdrive" class="service-link">Записаться <i class="fas fa-arrow-right"></i></a>
                 </div>
-                
+
                 <div class="service-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="service-icon">
                         <i class="fas fa-tools"></i>
@@ -282,7 +282,7 @@ if(isset($db)) {
                     <p>Профессиональное обслуживание премиальных автомобилей</p>
                     <a href="/services" class="service-link">Подробнее <i class="fas fa-arrow-right"></i></a>
                 </div>
-                
+
                 <div class="service-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="service-icon">
                         <i class="fas fa-exchange-alt"></i>
@@ -291,7 +291,7 @@ if(isset($db)) {
                     <p>Выгодный обмен вашего автомобиля на новый</p>
                     <a href="/profile/tradein" class="service-link">Оценить <i class="fas fa-arrow-right"></i></a>
                 </div>
-                
+
                 <div class="service-card" data-aos="fade-up" data-aos-delay="400">
                     <div class="service-icon">
                         <i class="fas fa-chart-line"></i>
@@ -300,130 +300,6 @@ if(isset($db)) {
                     <p>Выгодные условия финансирования для бизнеса и частных лиц</p>
                     <a href="/services/leasing" class="service-link">Рассчитать <i class="fas fa-arrow-right"></i></a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-      <!-- ========== ОТЗЫВЫ КЛИЕНТОВ (КАРУСЕЛЬ С ЧАСТИЧНО ВИДИМЫМИ) ========== -->
-    <section class="testimonials-section">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-subtitle">Отзывы клиентов</span>
-                <h2 class="section-title">Что говорят <span class="gold-text">о нас</span></h2>
-            </div>
-            
-            <div class="testimonials-carousel-wrapper">
-                <div class="testimonials-carousel" id="testimonialsCarousel">
-                    <div class="testimonial-item">
-                        <div class="testimonial-card">
-                            <div class="testimonial-quote">
-                                <i class="fas fa-quote-left"></i>
-                                <p>Превосходный сервис! Приобрел Mercedes-Benz S-Class. Особо хочу отметить индивидуальный подход и внимание к деталям. Менеджер подробно рассказал обо всех опциях, помог с выбором комплектации. Оформление заняло минимум времени.</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <img src="/assets/images/reviews/avatar1.jpg" alt="Александр Петров">
-                                <div class="author-info">
-                                    <h4>Александр Петров</h4>
-                                    <span>Владелец Mercedes-Benz S-Class</span>
-                                    <div class="author-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-item">
-                        <div class="testimonial-card">
-                            <div class="testimonial-quote">
-                                <i class="fas fa-quote-left"></i>
-                                <p>Отличный салон! Обслуживаю свой BMW уже 3 года. Всегда качественно и в срок. Сервисный центр работает безупречно, всегда предупреждают о необходимых работах, цены адекватные. Рекомендую!</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <img src="/assets/images/reviews/avatar2.jpg" alt="Дмитрий Иванов">
-                                <div class="author-info">
-                                    <h4>Дмитрий Иванов</h4>
-                                    <span>Владелец BMW X5</span>
-                                    <div class="author-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-item">
-                        <div class="testimonial-card">
-                            <div class="testimonial-quote">
-                                <i class="fas fa-quote-left"></i>
-                                <p>Взял Audi Q7 в лизинг. Очень удобные условия, помогли с оформлением. Персональный менеджер всегда на связи. Автомобиль полностью соответствует ожиданиям. Спасибо команде Umbra!</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <img src="/assets/images/reviews/avatar3.jpg" alt="Елена Соколова">
-                                <div class="author-info">
-                                    <h4>Елена Соколова</h4>
-                                    <span>Владелец Audi Q7</span>
-                                    <div class="author-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-item">
-                        <div class="testimonial-card">
-                            <div class="testimonial-quote">
-                                <i class="fas fa-quote-left"></i>
-                                <p>Отличный выбор автомобилей, вежливый персонал. Помогли с выбором, учли все пожелания. Процесс покупки был максимально комфортным и прозрачным.</p>
-                            </div>
-                            <div class="testimonial-author">
-                                <img src="/assets/images/reviews/avatar4.jpg" alt="Анна Смирнова">
-                                <div class="author-info">
-                                    <h4>Анна Смирнова</h4>
-                                    <span>Владелец Mercedes-Benz GLE</span>
-                                    <div class="author-rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <button class="testimonial-nav prev-testimonial" id="prevTestimonial">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="testimonial-nav next-testimonial" id="nextTestimonial">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-            </div>
-            
-            <div class="testimonials-dots" id="testimonialsDots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-            
-            <div class="text-center mt-4">
-                <a href="/reviews" class="btn btn-outline-gold">Все отзывы <i class="fas fa-arrow-right ms-2"></i></a>
             </div>
         </div>
     </section>
@@ -438,7 +314,7 @@ if(isset($db)) {
                         <span class="section-subtitle text-white">Свяжитесь с нами</span>
                         <h2>Начните свой путь<br>к автомобилю <span class="gold-text">мечты</span></h2>
                         <p>Оставьте заявку, и наш персональный консультант свяжется с вами в течение 15 минут</p>
-                        
+
                         <div class="contact-details">
                             <div class="contact-detail-item">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -462,7 +338,7 @@ if(isset($db)) {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="contact-features">
                             <div class="feature-item">
                                 <i class="fas fa-clock"></i>
@@ -483,7 +359,7 @@ if(isset($db)) {
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-lg-6 contact-form-wrapper" data-aos="fade-left">
                     <div class="contact-form-card">
                         <h3>Оставьте заявку</h3>
@@ -492,17 +368,17 @@ if(isset($db)) {
                                 <input type="text" class="form-control" name="name" placeholder="Ваше имя" required>
                                 <i class="fas fa-user input-icon"></i>
                             </div>
-                            
+
                             <div class="form-group">
                                 <input type="tel" class="form-control" name="phone" placeholder="Телефон" required>
                                 <i class="fas fa-phone input-icon"></i>
                             </div>
-                            
+
                             <div class="form-group">
                                 <input type="email" class="form-control" name="email" placeholder="Email">
                                 <i class="fas fa-envelope input-icon"></i>
                             </div>
-                            
+
                             <div class="form-group">
                                 <select class="form-control" name="request_type" required>
                                     <option selected disabled>Тип заявки</option>
@@ -514,13 +390,13 @@ if(isset($db)) {
                                 </select>
                                 <i class="fas fa-chevron-down input-icon"></i>
                             </div>
-                            
+
                             <div class="form-group">
                                 <textarea class="form-control" name="message" rows="3" placeholder="Сообщение"></textarea>
                             </div>
-                            
+
                             <button type="submit" class="btn btn-gold btn-block">Отправить заявку</button>
-                            
+
                             <p class="form-note">Нажимая кнопку, вы соглашаетесь с <a href="/privacy">политикой конфиденциальности</a></p>
                         </form>
                     </div>
@@ -537,7 +413,7 @@ if(isset($db)) {
                 <span class="section-subtitle">Будьте в курсе</span>
                 <h2 class="section-title">Последние <span class="gold-text">новости</span></h2>
             </div>
-            
+
             <div class="news-grid">
                 <div class="news-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="news-image">
@@ -553,7 +429,7 @@ if(isset($db)) {
                         <a href="/news/1" class="news-link">Подробнее <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="news-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="news-image">
                         <img src="/assets/images/news/bmw-7series.jpg" alt="BMW 7 Series">
@@ -568,7 +444,7 @@ if(isset($db)) {
                         <a href="/news/2" class="news-link">Подробнее <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                
+
                 <div class="news-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="news-image">
                         <img src="/assets/images/news/porsche-panamera.jpg" alt="Porsche Panamera">
@@ -584,7 +460,7 @@ if(isset($db)) {
                     </div>
                 </div>
             </div>
-            
+
             <div class="text-center mt-5">
                 <a href="/news" class="btn btn-outline-gold">Все новости <i class="fas fa-arrow-right ms-2"></i></a>
             </div>
