@@ -8,10 +8,8 @@ if(isset($db)) {
     $popularCars = $carModel->getPopular(4);
 }
 ?>
-
-<!-- Добавляем обертку main для отступа от шапки -->
-<main>
     <!-- ========== HERO СЕКЦИЯ ========== -->
+<main>
     <section class="hero-section">
         <div class="hero-bg-image">
             <img src="assets/images/brands/фон2.jpg" alt="Luxury Cars Showroom" class="hero-bg-img">

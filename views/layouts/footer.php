@@ -85,12 +85,39 @@
     <!-- Custom JS -->
     <script src="/assets/js/main.js"></script>
     
+        <!-- Swiper JS для слайдеров -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
     <script>
         AOS.init({
             duration: 1000,
             once: true,
             offset: 100
         });
+    
+        // Инициализация слайдера брендов как на greats.gallery
+        if(document.querySelector('.brands-slider')) {
+            new Swiper('.brands-slider', {
+                slidesPerView: 'auto',
+                spaceBetween: 30,
+                loop: true,
+                speed: 800,
+                autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: '.brands-next',
+                    prevEl: '.brands-prev',
+                },
+                breakpoints: {
+                    320: { slidesPerView: 2 },
+                    640: { slidesPerView: 3 },
+                    768: { slidesPerView: 4 },
+                    1024: { slidesPerView: 6 },
+                }
+            });
+        }
     </script>
 
     <?php include 'views/layouts/back-button.php'; ?>

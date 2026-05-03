@@ -1,0 +1,24 @@
+name: Publish to GitHub Pages
+
+on:
+  push:
+    branches: [ "master" ]  # <-- Ваша основная ветка. Если "master", исправьте.
+  workflow_dispatch:     # Кнопка для ручного запуска
+
+permissions:
+  contents: write         # Право на сохранение результата
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      # Если ваш проект требует сборки (npm, pip, etc.) — добавьте шаг здесь.
+      # Например, для простого HTML/CSS этот шаг не нужен.
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./   # Папка с файлами сайта (обычно корень или ./public)

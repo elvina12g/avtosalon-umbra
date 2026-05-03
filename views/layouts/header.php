@@ -19,7 +19,51 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
+    <style>
+        /* Прелоадер стили */
+        .pre-loader {
+            background-color: #fff;
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease;
+        }
+
+        .pre-loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .pre-loader .loader svg {
+            width: 80px;
+            height: 80px;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+    </style>
 <body class="<?php echo ($_SERVER['REQUEST_URI'] == '/' || $_SERVER['REQUEST_URI'] == '/index.php') ? 'home-page' : ''; ?>">
+    <!-- ПРЕЛОУДЕР -->
+    <div class="pre-loader">
+        <div class="loader">
+            <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#7b7b7b" stroke-width="3"/>
+                <circle cx="50" cy="50" r="45" fill="none" stroke="#cfcfcf" stroke-width="3" stroke-dasharray="200" stroke-dashoffset="0">
+                    <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="1.5s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+    </div>
+
     <!-- Навигация -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
@@ -103,4 +147,18 @@
         </div>
     <?php endif; ?>
 
-<main>
+    <main>
+        <!-- Скрипт для скрытия прелоадера -->
+        <script>
+            window.addEventListener('load', function() {
+                const preloader = document.querySelector('.pre-loader');
+                if(preloader) {
+                    setTimeout(() => {
+                        preloader.classList.add('hidden');
+                        setTimeout(() => {
+                            preloader.style.display = 'none';
+                        }, 500);
+                    }, 500);
+                }
+            });
+        </script>
