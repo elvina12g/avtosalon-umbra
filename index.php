@@ -217,8 +217,8 @@ elseif ($page === 'services' && isset($urlParts[1]) && !empty($urlParts[1])) {
     $methodName = $urlParts[1];
     $params = array_slice($urlParts, 2);
 }
-// Если это одна из страниц (about, news, contacts, reviews, privacy, terms)
-elseif (in_array($page, ['about', 'news', 'contacts', 'reviews', 'privacy', 'terms'])) {
+// Если это одна из страниц (about, news, contacts, reviews, privacy, terms, faq)
+elseif (in_array($page, ['about', 'news', 'contacts', 'reviews', 'privacy', 'terms', 'faq'])) {
     $controllerName = 'HomeController';
     $methodName = $page;
     $params = array_slice($urlParts, 1);

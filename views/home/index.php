@@ -1,4 +1,5 @@
 <?php
+// views/home/index.php
 // Получаем популярные автомобили для главной страницы
 $popularCars = [];
 if(isset($db)) {
@@ -302,107 +303,107 @@ if(isset($db)) {
         </div>
     </section>
 
- <!-- ========== КОНТАКТНАЯ СЕКЦИЯ ========== -->
-<section class="contact-section">
-    <div class="container">
-        <div class="contact-wrapper">
-            <div class="row g-0">
-                <div class="col-lg-6 contact-info" data-aos="fade-right">
-                    <div class="contact-info-content">
-                        <span class="section-subtitle text-white">Свяжитесь с нами</span>
-                        <h2>Начните свой путь<br>к автомобилю <span class="gold-text">мечты</span></h2>
-                        <p>Оставьте заявку, и наш персональный консультант свяжется с вами в течение 15 минут</p>
+    <!-- ========== КОНТАКТНАЯ СЕКЦИЯ ========== -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="row g-0">
+                    <div class="col-lg-6 contact-info" data-aos="fade-right">
+                        <div class="contact-info-content">
+                            <span class="section-subtitle">Свяжитесь с нами</span>
+                            <h2>Начните свой путь<br>к автомобилю <span class="gold-text">мечты</span></h2>
+                            <p>Оставьте заявку, и наш персональный консультант свяжется с вами в течение 15 минут</p>
 
-                        <div class="contact-details">
-                            <div class="contact-detail-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <div>
-                                    <h6>Адрес</h6>
-                                    <p>г. Уфа, ул. Адмирала Макарова, 32</p>
+                            <div class="contact-details">
+                                <div class="contact-detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <h6>Адрес</h6>
+                                        <p>г. Уфа, ул. Адмирала Макарова, 32</p>
+                                    </div>
+                                </div>
+                                <div class="contact-detail-item">
+                                    <i class="fas fa-phone-alt"></i>
+                                    <div>
+                                        <h6>Телефон</h6>
+                                        <p><a href="tel:+73471234567">+7 (347) 123-45-67</a></p>
+                                    </div>
+                                </div>
+                                <div class="contact-detail-item">
+                                    <i class="fas fa-clock"></i>
+                                    <div>
+                                        <h6>Режим работы</h6>
+                                        <p>Ежедневно: 10:00 — 21:00</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="contact-detail-item">
-                                <i class="fas fa-phone-alt"></i>
-                                <div>
-                                    <h6>Телефон</h6>
-                                    <p><a href="tel:+73471234567">+7 (347) 123-45-67</a></p>
-                                </div>
-                            </div>
-                            <div class="contact-detail-item">
-                                <i class="fas fa-clock"></i>
-                                <div>
-                                    <h6>Режим работы</h6>
-                                    <p>Ежедневно: 10:00 — 21:00</p>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="contact-features">
-                            <div class="feature-item">
-                                <i class="fas fa-clock"></i>
-                                <span>Консультация 24/7</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-car"></i>
-                                <span>Тест-драйв без выходных</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-percent"></i>
-                                <span>Специальные условия</span>
-                            </div>
-                            <div class="feature-item">
-                                <i class="fas fa-handshake"></i>
-                                <span>Trade-in программа</span>
+                            <div class="contact-features">
+                                <div class="feature-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>Консультация 24/7</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-car"></i>
+                                    <span>Тест-драйв без выходных</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-percent"></i>
+                                    <span>Специальные условия</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-handshake"></i>
+                                    <span>Trade-in программа</span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="col-lg-6 contact-form-wrapper" data-aos="fade-left">
-                    <div class="contact-form-card">
-                        <h3>Оставьте заявку</h3>
-                        <form action="/submit-contact" method="POST" class="contact-form" id="mainContactForm">
-                            <div class="form-group">
-                                <input type="text" class="form-control" name="name" placeholder="Ваше имя" required>
-                                <i class="fas fa-user input-icon"></i>
-                            </div>
+                    <div class="col-lg-6 contact-form-wrapper" data-aos="fade-left">
+                        <div class="contact-form-card">
+                            <h3>Оставьте заявку</h3>
+                            <form action="/submit-contact" method="POST" class="contact-form" id="mainContactForm">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="name" placeholder="Ваше имя" required>
+                                    <i class="fas fa-user input-icon"></i>
+                                </div>
 
-                            <div class="form-group">
-                                <input type="tel" class="form-control" name="phone" placeholder="Телефон" required>
-                                <i class="fas fa-phone input-icon"></i>
-                            </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control" name="phone" placeholder="Телефон" required>
+                                    <i class="fas fa-phone input-icon"></i>
+                                </div>
 
-                            <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="Email">
-                                <i class="fas fa-envelope input-icon"></i>
-                            </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="email" placeholder="Email">
+                                    <i class="fas fa-envelope input-icon"></i>
+                                </div>
 
-                            <div class="form-group">
-                                <select class="form-control" name="request_type" required>
-                                    <option selected disabled>Тип заявки</option>
-                                    <option value="showroom">Визит в шоу-рум</option>
-                                    <option value="test_drive">Тест-драйв</option>
-                                    <option value="service">Сервисное обслуживание</option>
-                                    <option value="trade_in">Trade-in</option>
-                                    <option value="credit">Кредит/Лизинг</option>
-                                </select>
-                                <i class="fas fa-chevron-down input-icon"></i>
-                            </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="request_type" required>
+                                        <option value="" selected disabled>Тип заявки</option>
+                                        <option value="showroom">Визит в шоу-рум</option>
+                                        <option value="test_drive">Тест-драйв</option>
+                                        <option value="service">Сервисное обслуживание</option>
+                                        <option value="trade_in">Trade-in</option>
+                                        <option value="credit">Кредит/Лизинг</option>
+                                    </select>
+                                    <i class="fas fa-chevron-down input-icon"></i>
+                                </div>
 
-                            <div class="form-group">
-                                <textarea class="form-control" name="message" rows="3" placeholder="Сообщение"></textarea>
-                            </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="message" rows="3" placeholder="Сообщение"></textarea>
+                                </div>
 
-                            <button type="submit" class="btn btn-gold btn-block">Отправить заявку</button>
+                                <button type="submit" class="btn btn-gold btn-block">Отправить заявку</button>
 
-                            <p class="form-note">Нажимая кнопку, вы соглашаетесь с <a href="/privacy">политикой конфиденциальности</a></p>
-                        </form>
+                                <p class="form-note">Нажимая кнопку, вы соглашаетесь с <a href="/privacy">политикой конфиденциальности</a></p>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- ========== НОВОСТИ ========== -->
     <section class="news-section">
@@ -464,4 +465,3 @@ if(isset($db)) {
             </div>
         </div>
     </section>
-</main>

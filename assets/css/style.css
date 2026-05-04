@@ -150,9 +150,7 @@ a {
 
 .navbar-collapse {
     background: var(--bg-primary);
-    padding: 20px;
     border-radius: 16px;
-    margin-top: 15px;
     box-shadow: var(--shadow-medium);
     border: 1px solid var(--border-light);
 }
