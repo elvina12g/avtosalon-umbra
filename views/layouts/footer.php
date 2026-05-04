@@ -8,8 +8,7 @@
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <div class="footer-logo">
-                        <span class="brand-text">UMBRA</span>
-                        <span class="brand-subtext">Premium Auto</span>
+                        <img src="assets/images/logo/Group 5.png" alt="UMBRA Logo" class="navbar-logo">
                     </div>
                     <p class="footer-description">
                         Официальный дилер премиальных автомобилей. 

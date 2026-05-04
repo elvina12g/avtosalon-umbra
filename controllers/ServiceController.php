@@ -1,6 +1,41 @@
 <?php
 class ServiceController {
     
+    public function index() {
+        $pageTitle = 'Все услуги';
+        require_once 'views/layouts/header.php';
+        require_once 'views/services/index.php';
+        require_once 'views/layouts/footer.php';
+    }
+    
+    public function leasing() {
+        $pageTitle = 'Лизинг автомобилей';
+        require_once 'views/layouts/header.php';
+        require_once 'views/services/leasing.php';
+        require_once 'views/layouts/footer.php';
+    }
+    
+    public function insurance() {
+        $pageTitle = 'Страхование автомобилей';
+        require_once 'views/layouts/header.php';
+        require_once 'views/services/insurance.php';
+        require_once 'views/layouts/footer.php';
+    }
+    
+    public function credit() {
+        $pageTitle = 'Автокредитование';
+        require_once 'views/layouts/header.php';
+        require_once 'views/services/credit.php';
+        require_once 'views/layouts/footer.php';
+    }
+    
+    public function detailing() {
+        $pageTitle = 'Детейлинг автомобилей';
+        require_once 'views/layouts/header.php';
+        require_once 'views/services/detailing.php';
+        require_once 'views/layouts/footer.php';
+    }
+    
     public function submitLeasing() {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             require_once 'models/Request.php';
@@ -186,4 +221,73 @@ class ServiceController {
             exit;
         }
     }
+
+    public function submitDetailing() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            require_once 'models/Request.php';
+            
+            global $db;
+            $request = new Request($db);
+            
+            $service_type = $_POST['service_type'] ?? '';
+            $service_types = [
+                'polishing' => 'Полировка кузова',
+                'ceramic' => 'Керамическое покрытие',
+                'paint_protection' => 'Защитная пленка',
+                'interior_cleaning' => 'Химчистка салона',
+                'engine_cleaning' => 'Мойка двигателя',
+                'full' => 'Полный детейлинг'
+            ];
+            $service_type_text = $service_types[$service_type] ?? $service_type;
+            
+            $car_brand = $_POST['car_brand'] ?? '';
+            $car_model = $_POST['car_model'] ?? '';
+            $car_year = $_POST['car_year'] ?? '';
+            
+            $message = "Заявка на детейлинг\n";
+            $message .= "Услуга: {$service_type_text}\n";
+            if ($car_brand || $car_model) {
+                $message .= "Автомобиль: {$car_brand} {$car_model}";
+                if ($car_year) $message .= " ({$car_year})";
+                $message .= "\n";
+            }
+            if (!empty($_POST['comment'])) {
+                $message .= "Комментарий: " . $_POST['comment'];
+            }
+            
+            $request_data = [
+                'type' => 'detailing',
+                'user_id' => $_SESSION['user_id'] ?? null,
+                'car_id' => null,
+                'name' => trim($_POST['name'] ?? $_SESSION['user_name'] ?? ''),
+                'phone' => trim($_POST['phone'] ?? ''),
+                'email' => trim($_POST['email'] ?? $_SESSION['user_email'] ?? ''),
+                'date' => trim($_POST['date'] ?? ''),
+                'time' => trim($_POST['time'] ?? ''),
+                'message' => $message,
+                'status' => 'new',
+                'assigned_to' => null,
+                'comment' => null
+            ];
+            
+            if (empty($request_data['name']) || empty($request_data['phone'])) {
+                $_SESSION['error'] = 'Пожалуйста, заполните имя и телефон';
+                header('Location: /services/detailing');
+                exit;
+            }
+            
+            $request_id = $request->create($request_data);
+            
+            if ($request_id) {
+                $request->notifyStaff($request_id, $request_data);
+                $_SESSION['success'] = 'Заявка на детейлинг успешно отправлена! Менеджер свяжется с вами.';
+            } else {
+                $_SESSION['error'] = 'Ошибка при отправке заявки. Пожалуйста, попробуйте позже.';
+            }
+            
+            header('Location: /services/detailing');
+            exit;
+        }
+    }
 }
+?>

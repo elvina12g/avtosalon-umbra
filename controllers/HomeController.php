@@ -80,5 +80,12 @@ class HomeController {
         require_once 'views/home/terms.php';
         require_once 'views/layouts/footer.php';
     }
+
+    public function faq() {
+        $pageTitle = 'Вопрос-ответ';
+        require_once 'views/layouts/header.php';
+        require_once 'views/home/faq.php';
+        require_once 'views/layouts/footer.php';
+    }
 }
 ?>
