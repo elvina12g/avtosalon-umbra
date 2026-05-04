@@ -1,5 +1,5 @@
 <?php
-// header.php - Минималистичная версия
+// header.php - Цельная минималистичная версия с акцентным цветом #4CAFC3
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -22,85 +22,110 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     
     <style>
-        /* Минималистичная шапка */
+        /* Цельная минималистичная шапка */
         :root {
             --bg-primary: #F9F6F0;
-            --accent-gold: #C9A961;
+            --accent: #4CAFC3;
+            --accent-hover: #3a8a9e;
             --text-primary: #1A1A1A;
             --text-secondary: #4A4A4A;
+            --border-light: rgba(76, 175, 195, 0.15);
         }
         
         .navbar {
             background: var(--bg-primary);
-            padding: 12px 0;
+            padding: 14px 0;
             transition: all 0.3s ease;
-            border-bottom: none;
-            box-shadow: none;
+            border-bottom: 1px solid var(--border-light);
         }
         
         .navbar.scrolled {
-            padding: 8px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 10px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            border-bottom-color: transparent;
         }
         
-        /* Логотип слева */
+        /* Логотип */
         .navbar-brand {
-            margin-right: 40px;
+            margin-right: 35px;
+            padding: 0;
         }
         
         .navbar-brand img {
-            height: 42px;
+            height: 40px;
             width: auto;
+            transition: height 0.3s ease;
         }
         
-        /* Навигация */
+        .navbar.scrolled .navbar-brand img {
+            height: 36px;
+        }
+        
+        /* Навигационные ссылки */
         .navbar-nav {
-            gap: 4px;
+            gap: 2px;
         }
         
         .nav-link {
             color: var(--text-primary) !important;
             font-weight: 400;
             font-size: 14px;
-            padding: 8px 16px !important;
+            padding: 8px 14px !important;
             transition: all 0.2s ease;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.2px;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 14px;
+            right: 14px;
+            height: 1px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.2s ease;
         }
         
         .nav-link:hover,
         .nav-link.active {
-            color: var(--accent-gold) !important;
-            background: transparent;
+            color: var(--accent) !important;
         }
         
-        /* Выпадающее меню - минималистичное */
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            transform: scaleX(1);
+        }
+        
+        /* Выпадающее меню */
         .dropdown-menu {
-            background: var(--bg-primary);
-            border: none;
-            border-radius: 8px;
-            padding: 8px 0;
-            min-width: 200px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            margin-top: 8px;
+            background: #FFFFFF;
+            border: 1px solid var(--border-light);
+            border-radius: 10px;
+            padding: 10px 0;
+            min-width: 210px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            margin-top: 10px;
         }
         
         .dropdown-item {
-            padding: 8px 20px;
+            padding: 10px 22px;
             font-size: 13px;
             color: var(--text-secondary);
             transition: all 0.2s ease;
         }
         
         .dropdown-item:hover {
-            background: rgba(201, 169, 97, 0.08);
-            color: var(--accent-gold);
-            padding-left: 24px;
+            background: rgba(76, 175, 195, 0.06);
+            color: var(--accent);
+            padding-left: 28px;
         }
         
         .dropdown-toggle::after {
-            margin-left: 6px;
+            margin-left: 5px;
             vertical-align: middle;
-            border-top-color: var(--accent-gold);
+            border-top-color: var(--accent);
         }
         
         /* Иконка пользователя */
@@ -108,24 +133,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 38px;
-            height: 38px;
+            width: 40px;
+            height: 40px;
             background: transparent;
             border-radius: 50%;
             color: var(--text-primary);
-            font-size: 20px;
+            font-size: 19px;
             transition: all 0.2s ease;
             cursor: pointer;
             text-decoration: none;
-            margin-left: 20px;
+            margin-left: 15px;
+            border: 1px solid var(--border-light);
         }
         
         .user-icon:hover {
-            color: var(--accent-gold);
+            color: var(--accent);
+            border-color: var(--accent);
             transform: translateY(-1px);
         }
         
-        /* Контактная информация - минималистично */
+        /* Контактная информация */
         .header-contacts {
             display: flex;
             align-items: center;
@@ -133,51 +160,55 @@
             margin-left: auto;
         }
         
+        .contact-phone-wrapper {
+            text-align: right;
+            line-height: 1.3;
+        }
+        
         .contact-phone {
-            font-weight: 500;
+            font-weight: 600;
             color: var(--text-primary);
             text-decoration: none;
-            font-size: 14px;
+            font-size: 15px;
             transition: color 0.2s;
+            display: block;
         }
         
         .contact-phone:hover {
-            color: var(--accent-gold);
+            color: var(--accent);
         }
         
-        .contact-email {
+        .contact-subtitle {
+            font-size: 10px;
             color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 13px;
-            transition: color 0.2s;
-        }
-        
-        .contact-email:hover {
-            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 500;
         }
         
         .contact-btn {
-            background: transparent;
-            color: var(--accent-gold);
-            padding: 6px 16px;
-            border-radius: 30px;
+            background: var(--accent);
+            color: #FFFFFF;
+            padding: 9px 22px;
+            border-radius: 25px;
             font-weight: 500;
             font-size: 13px;
             text-decoration: none;
             transition: all 0.2s ease;
-            border: 1px solid var(--accent-gold);
         }
         
         .contact-btn:hover {
-            background: var(--accent-gold);
-            color: var(--bg-primary);
+            background: var(--accent-hover);
+            color: #FFFFFF;
             transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(76, 175, 195, 0.3);
         }
         
-        /* Бургер-кнопка (адаптив) */
+        /* Бургер-кнопка */
         .navbar-toggler {
             border: none;
-            padding: 6px 10px;
+            padding: 8px 10px;
+            box-shadow: none;
         }
         
         .navbar-toggler:focus {
@@ -191,10 +222,10 @@
             height: 22px;
         }
         
-        /* Адаптив */
+        /* Адаптивность */
         @media (max-width: 991px) {
             .navbar-brand img {
-                height: 38px;
+                height: 36px;
             }
             
             .header-contacts {
@@ -202,29 +233,38 @@
             }
             
             .navbar-collapse {
-                background: var(--bg-primary);
+                background: #FFFFFF;
                 padding: 20px;
                 margin-top: 12px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-                border-radius: 12px;
+                box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+                border-radius: 14px;
+                border: 1px solid var(--border-light);
             }
             
             .nav-link {
                 padding: 10px 0 !important;
+                font-size: 15px;
+            }
+            
+            .nav-link::after {
+                display: none;
             }
             
             .dropdown-menu {
                 background: transparent;
                 box-shadow: none;
-                padding-left: 20px;
+                border: none;
+                padding-left: 16px;
+                margin-top: 0;
             }
             
             .user-icon {
                 margin-left: 0;
-                margin-top: 15px;
+                margin-top: 12px;
                 justify-content: flex-start;
                 width: auto;
                 gap: 10px;
+                border: none;
             }
             
             .user-icon i {
@@ -237,21 +277,30 @@
                 font-weight: 400;
                 color: var(--text-primary);
             }
+            
+            .mobile-contact-info {
+                display: block !important;
+                padding-top: 15px;
+                margin-top: 15px;
+                border-top: 1px solid #eee;
+            }
         }
         
         @media (min-width: 992px) {
             .user-icon span {
                 display: none;
             }
+            
+            .mobile-contact-info {
+                display: none !important;
+            }
         }
         
-        /* Убираем лишние разделители */
-        hr {
-            display: none;
-        }
-        
-        .dropdown-divider {
-            display: none;
+        /* Скрываем стандартные разделители */
+        hr, .dropdown-divider {
+            display: block;
+            margin: 8px 0;
+            border-color: #eee;
         }
     </style>
 </head>
@@ -260,12 +309,12 @@
 <!-- Навигация -->
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-        <!-- Логотип слева -->
+        <!-- Логотип -->
         <a class="navbar-brand" href="/">
             <img src="assets/images/logo/Group 5.png" alt="UMBRA Logo">
         </a>
         
-        <!-- Бургер-кнопка -->
+        <!-- Бургер-кнопка для мобильных -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-label="Меню">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -283,7 +332,7 @@
                     <a class="nav-link <?php echo ($_SERVER['REQUEST_URI'] == '/about') ? 'active' : ''; ?>" href="/about">О компании</a>
                 </li>
                 
-                <!-- Услуги - выпадающее меню -->
+                <!-- Услуги -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Услуги
@@ -299,43 +348,60 @@
                     </ul>
                 </li>
                 
-                <li class="nav-item">
-                    <a class="nav-link <?php echo ($_SERVER['REQUEST_URI'] == '/faq') ? 'active' : ''; ?>" href="/faq">Ваши вопросы</a>
+                <!-- Помощь -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Помощь
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/faq"><i class="far fa-question-circle me-2"></i>Вопрос-ответ</a></li>
+                        <li><a class="dropdown-item" href="/contacts"><i class="far fa-envelope me-2"></i>Обратная связь</a></li>
+                    </ul>
                 </li>
+                
                 <li class="nav-item">
                     <a class="nav-link <?php echo ($_SERVER['REQUEST_URI'] == '/contacts') ? 'active' : ''; ?>" href="/contacts">Контакты</a>
                 </li>
             </ul>
+            
+            <!-- Мобильная версия контактов -->
+            <div class="mobile-contact-info">
+                <a href="tel:88002228405" class="contact-phone d-block mb-1">8 (800) 222-84-05</a>
+                <small class="contact-subtitle d-block mb-3">Автосалон в Уфе</small>
+                <?php if(isset($_SESSION['user_id'])): ?>
+                    <a href="/profile" class="btn btn-sm w-100 mb-2" style="background: var(--accent); color: #fff;">Личный кабинет</a>
+                    <a href="/auth/logout" class="btn btn-sm btn-outline-secondary w-100">Выйти</a>
+                <?php else: ?>
+                    <a href="/auth/login" class="btn btn-sm w-100" style="background: var(--accent); color: #fff;">Войти / Регистрация</a>
+                <?php endif; ?>
+            </div>
         </div>
         
-        <!-- Контактная информация -->
+        <!-- Десктопная контактная информация -->
         <div class="header-contacts">
-            <div>
-                <a href="tel:+74951234567" class="contact-phone">8 (800) 222-84-05</a>
-                <br>
-                <a href="mailto:info@umbra.ru" class="contact-email">info@umbra.ru</a>
+            <div class="contact-phone-wrapper">
+                <a href="tel:88002228405" class="contact-phone">8 (800) 222-84-05</a>
+                <span class="contact-subtitle">Автосалон в Уфе</span>
             </div>
             <a href="#contactForm" class="contact-btn" id="headerContactBtn">Связаться</a>
         </div>
         
-        <!-- Иконка пользователя с плюсом -->
+        <!-- Иконка пользователя -->
         <?php if(isset($_SESSION['user_id'])): ?>
-            <div class="dropdown">
-                <a href="#" class="user-icon" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="dropdown d-none d-lg-block">
+                <a href="#" class="user-icon" data-bs-toggle="dropdown" aria-expanded="false" title="<?php echo htmlspecialchars($_SESSION['user_name']); ?>">
                     <i class="fas fa-user-circle"></i>
-                    <span><?php echo htmlspecialchars($_SESSION['user_name']); ?></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><a class="dropdown-item" href="/profile"><i class="fas fa-id-card me-2"></i> Личный кабинет</a></li>
-                    <li><a class="dropdown-item" href="/profile/favorites"><i class="fas fa-heart me-2"></i> Избранное</a></li>
+                    <li><a class="dropdown-item" href="/profile"><i class="fas fa-id-card me-2"></i>Личный кабинет</a></li>
+                    <li><a class="dropdown-item" href="/profile/favorites"><i class="fas fa-heart me-2"></i>Избранное</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="/auth/logout"><i class="fas fa-sign-out-alt me-2"></i> Выйти</a></li>
+                    <li><a class="dropdown-item" href="/auth/logout"><i class="fas fa-sign-out-alt me-2"></i>Выйти</a></li>
                 </ul>
             </div>
         <?php else: ?>
-            <a href="/auth/login" class="user-icon" title="Войти или зарегистрироваться">
+            <a href="/auth/login" class="user-icon d-none d-lg-flex" title="Войти или зарегистрироваться">
                 <i class="fas fa-user-plus"></i>
-                <span>Войти</span>
             </a>
         <?php endif; ?>
     </div>
@@ -374,14 +440,16 @@
             }
         });
         
-        // Плавная прокрутка к контактной форме
+        // Обработчик кнопки "Связаться"
         const headerContactBtn = document.getElementById('headerContactBtn');
         
         function scrollToContact() {
+            // Пробуем найти форму на странице
             const contactForm = document.getElementById('mainContactForm');
             if(contactForm) {
                 contactForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
+                // Если формы нет — переходим на главную с якорем
                 window.location.href = '/#contactForm';
             }
         }
@@ -393,7 +461,7 @@
             });
         }
         
-        // Для мобильной версии - поддержка выпадающего меню
+        // Поддержка выпадающего меню на мобильных
         document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
             toggle.addEventListener('click', function(e) {
                 if(window.innerWidth <= 991) {
@@ -401,13 +469,30 @@
                     const parent = this.closest('.dropdown');
                     const menu = parent.querySelector('.dropdown-menu');
                     if(menu) {
-                        menu.classList.toggle('show');
+                        const isOpen = menu.classList.contains('show');
+                        // Закрываем все открытые меню
+                        document.querySelectorAll('.dropdown-menu.show').forEach(m => m.classList.remove('show'));
+                        // Открываем/закрываем текущее
+                        if(!isOpen) {
+                            menu.classList.add('show');
+                        }
                     }
                 }
             });
         });
         
-        // Прелоадер
+        // Закрытие мобильного меню при клике на ссылку
+        document.querySelectorAll('.navbar-nav .nav-link:not(.dropdown-toggle)').forEach(link => {
+            link.addEventListener('click', function() {
+                const navbarCollapse = document.getElementById('navbarMain');
+                if(navbarCollapse && navbarCollapse.classList.contains('show')) {
+                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                    if(bsCollapse) bsCollapse.hide();
+                }
+            });
+        });
+        
+        // Прелоадер (если есть)
         window.addEventListener('load', function() {
             const preloader = document.querySelector('.pre-loader');
             if(preloader) {
